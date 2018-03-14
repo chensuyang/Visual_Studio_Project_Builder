@@ -7,76 +7,56 @@
     <x>0</x>
     <y>0</y>
     <width>670</width>
-    <height>403</height>
+    <height>600</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>670</width>
-    <height>403</height>
+    <height>600</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>670</width>
-    <height>403</height>
+    <height>600</height>
    </size>
   </property>
   <property name="windowTitle">
    <string>VS工程快速构建工具</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QListView" name="listView">
-    <property name="geometry">
-     <rect>
-      <x>16</x>
-      <y>88</y>
-      <width>311</width>
-      <height>192</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>16</x>
-      <y>288</y>
-      <width>75</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>添加目录</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="Project_Add_Path_Button">
     <property name="geometry">
      <rect>
       <x>570</x>
-      <y>290</y>
-      <width>75</width>
-      <height>23</height>
+      <y>60</y>
+      <width>81</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
      <string>添加目录</string>
     </property>
    </widget>
-   <widget class="QListView" name="listView_2">
+   <widget class="QPushButton" name="Project_Remove_Path_Button">
     <property name="geometry">
      <rect>
-      <x>335</x>
-      <y>90</y>
-      <width>311</width>
-      <height>192</height>
+      <x>570</x>
+      <y>300</y>
+      <width>81</width>
+      <height>31</height>
      </rect>
+    </property>
+    <property name="text">
+     <string>添加目录</string>
     </property>
    </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>16</x>
-      <y>68</y>
+      <x>20</x>
+      <y>310</y>
       <width>151</width>
       <height>16</height>
      </rect>
@@ -88,7 +68,7 @@
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>340</x>
+      <x>20</x>
       <y>70</y>
       <width>171</width>
       <height>16</height>
@@ -102,7 +82,7 @@
     <property name="geometry">
      <rect>
       <x>260</x>
-      <y>330</y>
+      <y>530</y>
       <width>131</width>
       <height>41</height>
      </rect>
@@ -158,6 +138,26 @@ p, li { white-space: pre-wrap; }
     </property>
     <property name="text">
      <string>选择目录</string>
+    </property>
+   </widget>
+   <widget class="QTableView" name="Project_Add_Path_tableView">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>90</y>
+      <width>631</width>
+      <height>191</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QTableView" name="Project_Remove_Path_tableView">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>330</y>
+      <width>631</width>
+      <height>191</height>
+     </rect>
     </property>
    </widget>
   </widget>
