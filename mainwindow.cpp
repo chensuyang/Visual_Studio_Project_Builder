@@ -7,7 +7,7 @@
 #include <QStandardItemModel>
 #include <QMessageBox>
 #include <QTextCodec>
-
+#include "dir_handle.h"
 
 QStandardItemModel  *Project_Add_Path_tableView_model = new QStandardItemModel();//项目额外添加目录表格
 QStandardItemModel  *Project_Remove_Path_tableView_model = new QStandardItemModel();//项目额外添加目录表格
@@ -36,6 +36,14 @@ void MainWindow::on_Project_Path_Button_clicked()//项目根目录选择按钮�
     {
      Project_Add_Path_tableView_Init();
      Project_Remove_Path_tableView_Init();//初始化两个列表框
+     QVector<QString> FilePath_Array;
+     FilePath_Array.clear();
+     FindFile(Project_Path,FilePath_Array,true);
+     QVector<QString>::iterator iter;
+     for (iter=FilePath_Array.begin();iter!=FilePath_Array.end();iter++)
+     {
+              qDebug() <<  *iter << "\0";
+     }
     }
     else
     {
