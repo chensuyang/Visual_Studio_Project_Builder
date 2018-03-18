@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+﻿#include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QApplication>
 #include <QFileDialog>
@@ -6,8 +6,9 @@
 #include <QString>
 #include <QStandardItemModel>
 #include <QMessageBox>
-#include <QTextCodec>
+#include <QtXml>
 #include "dir_handle.h"
+#include "XML_handle.h"
 
 QStandardItemModel  *Project_Add_Path_tableView_model = new QStandardItemModel();//项目额外添加目录表格
 QStandardItemModel  *Project_Remove_Path_tableView_model = new QStandardItemModel();//项目额外添加目录表格
@@ -16,8 +17,6 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-    QTextCodec *codec = QTextCodec::codecForName("UTF-8");//设置编码
-    QTextCodec::setCodecForLocale(codec);
     ui->setupUi(this);
 }
 
@@ -36,14 +35,14 @@ void MainWindow::on_Project_Path_Button_clicked()//项目根目录选择按钮�
     {
      Project_Add_Path_tableView_Init();
      Project_Remove_Path_tableView_Init();//初始化两个列表框
+     QDomDocument vs_filters_file("vs_filters_file");
      QVector<QString> FilePath_Array;
-     FilePath_Array.clear();
      FindFile(Project_Path,FilePath_Array,true);
-     QVector<QString>::iterator iter;
-     for (iter=FilePath_Array.begin();iter!=FilePath_Array.end();iter++)
-     {
-              qDebug() <<  *iter << "\0";
-     }
+     Create_XML(vs_filters_file,FilePath_Array,FilePath_Array);
+     Create_VS_filters_File(Project_Path+"/test.xml",vs_filters_file);
+
+
+
     }
     else
     {

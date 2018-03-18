@@ -1,9 +1,14 @@
-#include "dir_handle.h"
+﻿#include "dir_handle.h"
 #include <QDir>
 #include<QVector>
 #include <stdio.h>
 #include "Qdebug"
+#include <QTextCodec>
 
+QString Chinese_processing(QString text)
+{
+    return text;
+}
 
 bool FindFile(const QString &path,QVector<QString> &FilePath_Array,bool OnlyDir)//遍历文件or目录
 {
@@ -27,7 +32,7 @@ bool FindFile(const QString &path,QVector<QString> &FilePath_Array,bool OnlyDir)
         {
             if(OnlyDir)//如果当前只需要目录
             {
-                FilePath_Array.append(fileInfo.path()+"/"+fileInfo.fileName());//添加目录到QVector
+                FilePath_Array.append(Chinese_processing(fileInfo.path()+"/"+fileInfo.fileName()));//添加目录到QVector
             }
             FindFile(fileInfo.filePath(),FilePath_Array,OnlyDir);
         }
@@ -35,7 +40,7 @@ bool FindFile(const QString &path,QVector<QString> &FilePath_Array,bool OnlyDir)
         {
             if(!OnlyDir)//如果当前只需要文件
             {
-                FilePath_Array.append(fileInfo.path()+"/"+fileInfo.fileName());//添加文件目录到QVector
+                FilePath_Array.append(Chinese_processing(fileInfo.path()+"/"+fileInfo.fileName()));//添加文件目录到QVector
             }
         }
         i++;

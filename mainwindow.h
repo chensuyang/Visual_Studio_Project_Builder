@@ -1,5 +1,10 @@
-#ifndef MAINWINDOW_H
+﻿#ifndef MAINWINDOW_H
 #define MAINWINDOW_H
+
+
+#ifdef WIN32
+#pragma execution_character_set("utf-8")
+#endif
 
 #include <QMainWindow>
 
