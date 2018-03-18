@@ -36,9 +36,10 @@ void MainWindow::on_Project_Path_Button_clicked()//项目根目录选择按钮�
      Project_Add_Path_tableView_Init();
      Project_Remove_Path_tableView_Init();//初始化两个列表框
      QDomDocument vs_filters_file("vs_filters_file");
-     QVector<QString> FilePath_Array;
-     FindFile(Project_Path,FilePath_Array,true);
-     Create_XML(vs_filters_file,FilePath_Array,FilePath_Array);
+     QVector<QString> File_Array;
+     QVector<QString> Path_Array;
+     FindFile(Project_Path,File_Array,Path_Array);
+     Create_XML(vs_filters_file,Project_Path,File_Array,Path_Array,true);
      Create_VS_filters_File(Project_Path+"/test.xml",vs_filters_file);
 
 

@@ -10,7 +10,7 @@ QString Chinese_processing(QString text)
     return text;
 }
 
-bool FindFile(const QString &path,QVector<QString> &FilePath_Array,bool OnlyDir)//遍历文件or目录
+bool FindFile(const QString &path,QVector<QString> &File_Array,QVector<QString> &Path_Array)//遍历文件and目录
 {
     QDir dir(path);
     if (!dir.exists())
@@ -30,18 +30,13 @@ bool FindFile(const QString &path,QVector<QString> &FilePath_Array,bool OnlyDir)
         bool bisDir=fileInfo.isDir();
         if(bisDir)//判断当前是不是目录
         {
-            if(OnlyDir)//如果当前只需要目录
-            {
-                FilePath_Array.append(Chinese_processing(fileInfo.path()+"/"+fileInfo.fileName()));//添加目录到QVector
-            }
-            FindFile(fileInfo.filePath(),FilePath_Array,OnlyDir);
+            Path_Array.append(fileInfo.path()+"/"+fileInfo.fileName());//添加目录到QVector
+            FindFile(fileInfo.filePath(),File_Array,Path_Array);
         }
         else
         {
-            if(!OnlyDir)//如果当前只需要文件
-            {
-                FilePath_Array.append(Chinese_processing(fileInfo.path()+"/"+fileInfo.fileName()));//添加文件目录到QVector
-            }
+
+            File_Array.append(fileInfo.path()+"/"+fileInfo.fileName());//添加文件目录到QVector
         }
         i++;
     }
