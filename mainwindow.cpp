@@ -10,6 +10,10 @@
 #include "dir_handle.h"
 #include "XML_handle.h"
 
+QVector<QString> File_Array;//文件路径数组
+QVector<QString> Path_Array;//目录路径数组
+QVector<QString> External_Path_Array;//外部目录数组
+
 QStandardItemModel  *Project_Add_Path_tableView_model = new QStandardItemModel();//项目额外添加目录表格
 QStandardItemModel  *Project_Remove_Path_tableView_model = new QStandardItemModel();//项目额外添加目录表格
 
@@ -36,12 +40,7 @@ void MainWindow::on_Project_Path_Button_clicked()//项目根目录选择按钮�
      Project_Add_Path_tableView_Init();
      Project_Remove_Path_tableView_Init();//初始化两个列表框
      QDomDocument vs_filters_file("vs_filters_file");
-     QVector<QString> File_Array;
-     QVector<QString> Path_Array;
      FindFile(Project_Path,File_Array,Path_Array);
-     Create_XML(vs_filters_file,Project_Path,File_Array,Path_Array,true);
-     Create_VS_filters_File(Project_Path+"/test.xml",vs_filters_file);
-
 
 
     }
@@ -89,6 +88,7 @@ void MainWindow::on_Project_Add_Path_Button_clicked()//项目添加目录按钮�
         Project_Add_Path_tableView_model->item(row_cnt,0)->setTextAlignment(Qt::AlignCenter);//设置字符位置
         Project_Add_Path_tableView_model->setItem(row_cnt,1,new QStandardItem("Yes"));
 
+
     }
     else
     {
@@ -112,5 +112,43 @@ void MainWindow::on_Project_Remove_Path_Button_clicked(void)//项目排除目录
     else
     {
         QMessageBox::warning(NULL,QString("警告"),QString("当前目录无效"),QMessageBox::Yes);
+    }
+}
+
+void MainWindow::on_pushButton_5_clicked()
+{
+    External_Path_Array.clear();//清空外部文件目录
+    for(int i=0;i<(Project_Add_Path_tableView_model->rowCount());i++)//将要添加的外部路径列表框中所有项目添加至External_Path_Array
+    {
+        QVector<QString> Tmp_File_Array;//临时文件路径数组
+        QModelIndex index=Project_Add_Path_tableView_model->index(i,1,QModelIndex());//获取每一行第二列的数据
+        QString isFind= index.data().toString();
+        if(isFind=="是")//判断需不需要递归搜索
+        {
+            index=Project_Add_Path_tableView_model->index(i,0,QModelIndex());//获取每一行第一列的数据
+            QString External_Path= index.data().toString();
+            FindFile(External_Path,Tmp_File_Array,External_Path_Array);//遍历文件,并直接把目录添加到External_Path_Array中
+        }
+        else
+        {
+            index=Project_Add_Path_tableView_model->index(i,0,QModelIndex());//获取每一行第一列的数据
+            QString External_Path= index.data().toString();
+            External_Path_Array.append(External_Path);//添加进External_Path_Array
+        }
+    }
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    qDebug("%d",this->frameGeometry().width());
+    if(this->frameGeometry().width()==706)//如果窗口没有伸展
+    {
+        this->setMinimumSize(970, 600);
+        this->setMaximumSize(970, 600);
+    }
+    else
+    {
+        this->setMinimumSize(690, 600);
+        this->setMaximumSize(690, 600);
     }
 }
