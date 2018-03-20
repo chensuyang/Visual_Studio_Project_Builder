@@ -146,26 +146,6 @@ p, li { white-space: pre-wrap; }
      <string>选择目录</string>
     </property>
    </widget>
-   <widget class="QTableView" name="Project_Add_Path_tableView">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>90</y>
-      <width>631</width>
-      <height>191</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QTableView" name="Project_Remove_Path_tableView">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>330</y>
-      <width>631</width>
-      <height>191</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
@@ -252,6 +232,26 @@ p, li { white-space: pre-wrap; }
     </property>
     <property name="text">
      <string>确定</string>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="Project_Add_Path_listWidget">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>90</y>
+      <width>631</width>
+      <height>192</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="Project_Remove_Path_listWidget">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>330</y>
+      <width>631</width>
+      <height>192</height>
+     </rect>
     </property>
    </widget>
   </widget>
