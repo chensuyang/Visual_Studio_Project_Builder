@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Project.vcxproj</file>
+    </qresource>
+</RCC>

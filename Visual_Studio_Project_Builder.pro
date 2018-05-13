@@ -7,7 +7,7 @@
 
 QT       += xml
 QT       += core gui
-
+RESOURCES +=.\vcxproj_file.qrc
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = Visual_Studio_Project_Builder
@@ -38,3 +38,6 @@ HEADERS += \
 
 FORMS += \
         mainwindow.ui
+
+RESOURCES += \
+    vcxproj_file.qrc
